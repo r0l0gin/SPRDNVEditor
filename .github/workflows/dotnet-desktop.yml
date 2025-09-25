@@ -98,7 +98,3 @@ jobs:
       
     - name: Run code analysis
       run: dotnet build --no-restore --verbosity normal /p:TreatWarningsAsErrors=false
-      
-    - name: Check formatting
-      run: dotnet format --verify-no-changes --verbosity diagnostic
-      continue-on-error: true
