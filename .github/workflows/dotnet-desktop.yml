@@ -44,6 +44,9 @@ jobs:
     needs: build-and-test
     runs-on: windows-latest
     if: github.event_name == 'release'
+    permissions:
+      contents: write   # ✅ allow writing release assets
+    
     
     steps:
     - name: Checkout code
@@ -72,14 +75,11 @@ jobs:
       shell: powershell
       
     - name: Upload release asset
-      uses: actions/upload-release-asset@v1
+      uses: softprops/action-gh-release@v2
+      with:
+        files: SPRDNVEditor-${{ github.event.release.tag_name }}-win-x64.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ./SPRDNVEditor-${{ github.event.release.tag_name }}-win-x64.zip
-        asset_name: SPRDNVEditor-${{ github.event.release.tag_name }}-win-x64.zip
-        asset_content_type: application/zip
 
   code-quality:
     runs-on: windows-latest
