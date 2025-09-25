@@ -38,14 +38,14 @@ A Windows Forms application for editing SPRD (UNISOC) device NV parameters. This
 ## Installation
 
 ### Pre-built Releases
-1. Download the latest release from the [Releases](https://github.com/yourusername/SPRDNVEditor/releases) page
+1. Download the latest release from the [Releases](https://github.com/r0l0gin/SPRDNVEditor/releases) page
 2. Extract the ZIP file to your preferred location
 3. Ensure you have the required FDL files (fdl1.bin, fdl2.bin)
 4. Run `SPRDNVEditor.exe`
 
 ### Building from Source
 ```bash
-git clone https://github.com/yourusername/SPRDNVEditor.git
+git clone https://github.com/r0l0gin/SPRDNVEditor.git
 cd SPRDNVEditor
 dotnet restore
 dotnet build -c Release
