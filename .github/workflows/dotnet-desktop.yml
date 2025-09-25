@@ -2,9 +2,9 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
   release:
     types: [published]
 
@@ -68,10 +68,6 @@ jobs:
         Copy-Item "bin/Release/net6.0-windows/win-x64/publish/SPRDNVEditor.exe" "$packageName/"
         Copy-Item "README.md" "$packageName/"
         Copy-Item "LICENSE" "$packageName/" -ErrorAction SilentlyContinue
-        Copy-Item "CLAUDE.md" "$packageName/"
-        echo "# FDL Files" > "$packageName/README-FDL.txt"
-        echo "Place your fdl1.bin and fdl2.bin files in this directory" >> "$packageName/README-FDL.txt"
-        echo "These files should be extracted from your device firmware or PAC file" >> "$packageName/README-FDL.txt"
         Compress-Archive -Path "$packageName" -DestinationPath "$packageName.zip"
       shell: powershell
       
